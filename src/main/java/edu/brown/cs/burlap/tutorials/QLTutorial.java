@@ -166,9 +166,11 @@ public class QLTutorial extends MDPSolver implements LearningAgent, QProvider {
 
 
 		//DEVOXXUK: try changing these
+		//between 0 and 1
 		double gamma = 0.99;
+		//between 0 and 1
 		double epsilon = 0.1;
-		int no_episodes = 1000;
+		int no_episodes = 500;
 
 		//create Q-learning
 		QLTutorial agent = new QLTutorial(domain, gamma, new SimpleHashableStateFactory(),
@@ -176,7 +178,7 @@ public class QLTutorial extends MDPSolver implements LearningAgent, QProvider {
 
 		//run Q-learning and store results in a list
 		List<Episode> episodes = new ArrayList<Episode>(no_episodes);
-		for(int i = 0; i < 1000; i++){
+		for(int i = 0; i < no_episodes; i++){
 			episodes.add(agent.runLearningEpisode(env));
 			env.resetEnvironment();
 		}

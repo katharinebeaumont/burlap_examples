@@ -15,6 +15,6 @@ Go to edu.brown.cs.burlap.tutorials.QLTutorial.
 Run it.
 The agent (grey dot) is trying to learn how to get from the bottom left of the screen to the top right in as few steps as possible.
 
-Look in the file for //DEVOXXUK.
+Look in the file for //DEVOXXUK in the main() method.
 Look at the effects of changing gamma, epsilon and the number of episodes.
 How quickly can you get the agent to optimise the route through the environment?
