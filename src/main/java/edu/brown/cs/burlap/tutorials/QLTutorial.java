@@ -152,6 +152,7 @@ public class QLTutorial extends MDPSolver implements LearningAgent, QProvider {
 
 		GridWorldDomain gwd = new GridWorldDomain(11, 11);
 		gwd.setMapToFourRooms();
+
 		gwd.setProbSucceedTransitionDynamics(0.8);
 		gwd.setTf(new GridWorldTerminalFunction(10, 10));
 
@@ -163,12 +164,18 @@ public class QLTutorial extends MDPSolver implements LearningAgent, QProvider {
 		//create environment
 		SimulatedEnvironment env = new SimulatedEnvironment(domain, s);
 
+
+		//DEVOXXUK: try changing these
+		double gamma = 0.99;
+		double epsilon = 0.1;
+		int no_episodes = 1000;
+
 		//create Q-learning
-		QLTutorial agent = new QLTutorial(domain, 0.99, new SimpleHashableStateFactory(),
-				new ConstantValueFunction(), 0.1, 0.1);
+		QLTutorial agent = new QLTutorial(domain, gamma, new SimpleHashableStateFactory(),
+				new ConstantValueFunction(), 1, epsilon);
 
 		//run Q-learning and store results in a list
-		List<Episode> episodes = new ArrayList<Episode>(1000);
+		List<Episode> episodes = new ArrayList<Episode>(no_episodes);
 		for(int i = 0; i < 1000; i++){
 			episodes.add(agent.runLearningEpisode(env));
 			env.resetEnvironment();
